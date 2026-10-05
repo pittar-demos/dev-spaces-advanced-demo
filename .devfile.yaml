@@ -1,0 +1,24 @@
+schemaVersion: 2.2.2
+attributes:
+  controller.devfile.io/storage-type: per-workspace
+metadata:
+  name: "devspaces"
+  provider: Red Hat
+  displayName: Dev Spaces Demo
+  description: Dev Spaces Demo
+  tags:
+    - DevSpaces
+    - Podman
+    - Demo
+  projectType: RHDH
+  language: YAML
+components:
+  - name: tools
+    container:
+      image: quay.io/pittar/custom-udi-demo:latest
+      args: ['tail', '-f', '/dev/null']
+      mountSources: true
+      cpuLimit: '4'
+      cpuRequest: '500m'
+      memoryLimit: '8G'
+      memoryRequest: '2G'
