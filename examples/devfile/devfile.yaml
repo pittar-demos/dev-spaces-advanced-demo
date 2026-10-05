@@ -1,0 +1,94 @@
+schemaVersion: 2.2.2
+attributes:
+  controller.devfile.io/storage-type: per-workspace
+metadata:
+  name: "quarkusapp"
+  provider: Red Hat
+  displayName: Basic Quarkus App
+  description: Basic Quarkus App
+  tags:
+    - Quarkus
+    - Java
+  projectType: Quarkus
+  language: Java
+projects:
+  - name: "quarkusapp"
+    git:
+      remotes:
+        origin: "https://github.com/pittar-rhdh/quarkusapp"
+      checkoutFrom:
+        revision: "main"
+        remote: origin
+components:
+  - name: tools
+    container:
+      image: quay.io/pittar/custom-udi-demo:latest
+      env:
+        - name: USE_JAVA21
+          value: "true"
+        - name: QUARKUS_HTTP_HOST
+          value: 0.0.0.0
+        - name: QUARKUS_ANALYTICS_DISABLED
+          value: "true"
+        # --- Kubedock & Testcontainers Configuration ---
+        # --- Disable KUBEDOCK when nested containers are enabled.
+        - name: KUBEDOCK_ENABLED
+          value: "true"
+        - name: DOCKER_HOST
+          value: "tcp://127.0.0.1:2475"
+        - name: TESTCONTAINERS_RYUK_DISABLED
+          value: "true"
+        - name: TESTCONTAINERS_CHECKS_DISABLE
+          value: "true"
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: main
+          protocol: https
+          targetPort: 8080
+          path: /
+        - exposure: public
+          name: quarkus-devui
+          path: /q/dev-ui
+          protocol: https
+          targetPort: 8080
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      cpuLimit: '4'
+      cpuRequest: '1'
+      memoryLimit: '8G'
+      memoryRequest: '8G'
+      mountSources: true
+  - volume:
+      size: 1G
+    name: m2
+commands:
+  - id: 1-package
+    exec:
+      label: "1. Package the application"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/"quarkusapp"
+      commandLine: "mvn package"
+      group:
+        kind: build
+        isDefault: true
+  - id: 2-startdev
+    exec:
+      label: "2. Start Development mode (Hot reload + debug)"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/"quarkusapp"
+      commandLine: "mvn compile quarkus:dev"
+      group:
+        kind: run
+        isDefault: true
+  - id: configure-opencode
+    exec:
+      component: tools
+      commandLine: "mkdir -p /home/user/.config/opencode && cp /data/opencode/*.* /home/user/.config/opencode/"
+events:
+  postStart:
+    - configure-opencode

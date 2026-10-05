@@ -1,0 +1,51 @@
+apiVersion: org.eclipse.che/v2
+kind: CheCluster
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  name: devspaces
+spec:
+  components:
+    cheServer:
+      debug: false
+      logLevel: INFO
+    dashboard:
+      logLevel: ERROR
+    metrics:
+      enable: true
+    pluginRegistry:
+      openVSXURL: 'https://open-vsx.org'
+  containerRegistry: {}
+  devEnvironments:
+    disableContainerRunCapabilities: false
+    startTimeoutSeconds: 300
+    secondsOfRunBeforeIdling: -1
+    maxNumberOfWorkspacesPerUser: -1
+    maxNumberOfRunningWorkspacesPerUser: 3
+    containerBuildConfiguration:
+      openShiftSecurityContextConstraint: container-build
+    defaultNamespace:
+      autoProvision: true
+      template: <username>-devspaces
+    secondsOfInactivityBeforeIdling: 2400
+    storage:
+      pvcStrategy: per-user
+    defaultComponents:
+      - name: tools
+        container:
+          image: quay.io/pittar/custom-udi-demo:latest
+          memoryLimit: 4Gi
+          memoryRequest: 1Gi
+          cpuLimit: "1"
+          cpuRequest: 100m
+          mountSources: true
+  gitServices: {}
+  networking:
+    auth:
+      gateway:
+        kubeRbacProxy:
+          logLevel: 0
+        oAuthProxy:
+          cookieExpireSeconds: 86400
+        traefik:
+          logLevel: INFO
