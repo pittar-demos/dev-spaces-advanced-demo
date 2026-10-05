@@ -23,19 +23,10 @@ components:
       memoryLimit: '8G'
       memoryRequest: '2G'
 commands:
-  - id: configure-tooling
+  - id: configure-opencode
     exec:
       component: tools
-      workingDir: ${PROJECT_SOURCE}
-      label: Configure OpenCode
-      commandLine: |
-        set -euo pipefail
-        mkdir -p "$TOOLS_HOME/bin" "$HOME/.local/bin"
-
-        # Copy opencode config, if this environment provides one.
-        if [ -d /data/opencode ]; then
-          mkdir -p "$HOME/.config/opencode"
-          cp /data/opencode/*.* "$HOME/.config/opencode/" 2>/dev/null || true
-        fi
-
-        echo "==> Ready:"
+      commandLine: "mkdir -p /home/user/.config/opencode && cp /data/opencode/*.* /home/user/.config/opencode/"
+events:
+  postStart:
+    - configure-opencode
