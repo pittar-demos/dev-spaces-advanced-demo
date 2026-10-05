@@ -70,8 +70,6 @@ The following `CheCluster` custom resource showcases key administrative controls
 
 </div>
 
-<div align="center">
-
 ```yaml
 apiVersion: org.eclipse.che/v2
 kind: CheCluster
@@ -79,29 +77,28 @@ metadata:
   name: devspaces
 spec:
   components:
-    # 🏪 Plugin Registry: Built-in or Custom?
-    # Point to "open-vsx" for thousands of plugins
-    # Or create internal registry for approved plugins only
+    # Leave this empty to use the built-in plugin registry with a subset of Plugins.
+    # This config is pointing to the "open-vsx" registry, where there are thousands of plugins.
+    # You can also define your own internal plugin registry in order to restrict plugin access to
+    # approved plugins.
     pluginRegistry:
       openVSXURL: 'https://open-vsx.org'
-      
   devEnvironments:
-    # 🐳 Container Capabilities
-    disableContainerRunCapabilities: false  # Allow Podman/Docker
-    
-    # 🏢 Resource Management
-    maxNumberOfWorkspacesPerUser: -1        # No limit on total workspaces
-    maxNumberOfRunningWorkspacesPerUser: 3  # Limit active consumption
-    
-    # 🏗️ Auto-Provisioning
+    # This setting allows users to use Podman to run containers.
+    disableContainerRunCapabilities: false
+    # Maximum number or workspaces per user. "-1" means no limit.  This counts all
+    # workspaces, even ones that are not running.
+    maxNumberOfWorkspacesPerUser: -1
+    # Number of running workspaces per user.  This is more important, as each running
+    # workspace actually consumes resources.
+    maxNumberOfRunningWorkspacesPerUser: 3
+    # Enable or disable workspace auto provisioning.
     defaultNamespace:
       autoProvision: true
       template: <username>-devspaces
-        
-    # ⏰ Idle Management  
-    secondsOfInactivityBeforeIdling: 2400   # 40 minutes to auto-shutdown
-    
-    # 🛠️ Default Tooling
+    # How long to wait until an inactive workspace is turned off.
+    secondsOfInactivityBeforeIdling: 2400
+    # Default components container if not specified in a devfile.
     defaultComponents:
       - name: tools
         container:
@@ -112,8 +109,6 @@ spec:
           cpuRequest: 100m
           mountSources: true
 ```
-
-</div>
 
 > 🔐 **Admin Access**: These settings are managed by cluster administrators with proper permissions.
 
