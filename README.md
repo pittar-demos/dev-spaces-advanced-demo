@@ -40,3 +40,17 @@ The sky is the limit!
 
 ## Security and Compliance
 
+OpenShift Dev Spaces shines when it comes to security and compliance, brining a number of very valuable capabilities to the table.
+
+* Souce code doesn't leave the network: Since the code resides in your workspace pod in your OpenShift cluster, your source code never lands on a developer laptop.  This means a lost or stolen laptop doesn't contain sensitive information.
+* Sandboxed development environements:  As develpoment teams adopt AI tools such as coding assistants and agents, the importance of developing in a sandbox environment becomes critical.  Not only is this imporatant in the event that a code assistant or agent decides to delete your home directory (there are many well documented instances of this), but also attempting to escalate privileges on your machine.  In both cases, Dev Spaces provides security constaraints and mitigations.
+    * If an agent decides to delete your home directory, simply delete and re-start your workspace to be back up and running in a minute or two.
+    * Role based access controls, security context constraints, network policies and resource quotas add layers of protection against a potential rogue agent that tries to access systems or resources that it's not supposed to access.
+    * The "as code" nature of Dev Spaces makes it more difficult for a user to bypass security controls and install unvetted extensions or use "shadow" models.
+
+## Cost and Maintenance
+
+OpenShift Dev Spaces is a cost effective development environment option.  Developers no longer require powerful laptops, as the computing power needed to support development is on the server side.  Many developer workspaces can be bin packed efficiently one worker nodes, scaling pods and nodes up and down on demand.
+Developer workspace configuration is controlled by the devfile, and the underlying tools/runtimes are contained in the tools image, removing the IDE maintenance burden from individual developers.
+
+OpenShift Dev Spaces is a supported capability of Red Hat OpenShift Container Platform (as well as Azure Red Hat OpenShift, Red Hat OpenShift Service on AWS, and OpenShift Dedicated on GCP), meaning there is nothing to procure to use Dev Spaces, just additionaly "worker node" capacity.
