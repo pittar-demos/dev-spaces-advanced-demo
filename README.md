@@ -19,6 +19,54 @@ There are two main benefits to keeping your devfiles in a centrally managed git 
 * Authentication requirements:  If your git repositories are private, then Dev Spaces needs to have credentials to first read the `devfile` in your private repository.  This works fine if you're using one of the "big four" git services such as GitHub, GitLab, Bitbucket or Azure Repos, but if you're using a lesser known repository (for example, Gitea), this is a problem.  By keeping your devfiles (which don't contain sensitive information) in a public repository, Dev Spaces can read the devfile, start the workspace, then use your registered credentials to clone the private repository.
 * Devfile management:  A central devfile git repository separates the devfiles from the project git repositories, making it easier to centrally manage/update devfiles and keep tighter control of them at the same time.  Memebers of a project team that have commit access on a project repo don't have commit rights on the devfile git repository.
 
+## Dev Space Administrative Controls
+
+There are a number of default configuration settings that can be changed in order to best suit your organization.
+
+Here is a partial `CheCluster` custrom resource to highlight a few such controls:
+
+```
+apiVersion: org.eclipse.che/v2
+kind: CheCluster
+metadata:
+  name: devspaces
+spec:
+  components:
+    # Leave this empty to use the built-in plugin registry with a subset of Plugins.
+    # This config is pointing to the "open-vsx" registry, where there are thousands of plugins.
+    # You can also define your own internal plugin registry in order to restrict plugin access to
+    # approved plugins.
+    pluginRegistry:
+      openVSXURL: 'https://open-vsx.org'
+  devEnvironments:
+    # This setting allows users to use Podman to run containers.
+    disableContainerRunCapabilities: false
+    # Maximum number or workspaces per user. "-1" means no limit.  This counts all
+    # workspaces, even ones that are not running.
+    maxNumberOfWorkspacesPerUser: -1
+    # Number of running workspaces per user.  This is more important, as each running
+    # workspace actually consumes resources.
+    maxNumberOfRunningWorkspacesPerUser: 3
+    # Enable or disable workspace auto provisioning.
+    defaultNamespace:
+      autoProvision: true
+      template: <username>-devspaces
+    # How long to wait until an inactive workspace is turned off.
+    secondsOfInactivityBeforeIdling: 2400
+    # Default components container if not specified in a devfile.
+    defaultComponents:
+      - name: tools
+        container:
+          image: quay.io/pittar/custom-udi-demo:latest
+          memoryLimit: 4Gi
+          memoryRequest: 1Gi
+          cpuLimit: "1"
+          cpuRequest: 100m
+          mountSources: true
+```
+
+The settings above are managed by a "cluster admin", or a user that is delegated permission to manage this resource.
+
 ## Central Configuration Management
 
 It's normal to have common configuration that all developer requires.  A good example of this is a common `settings.xml` file that all developers should use.  Configuration like this can be centrally managed and distributed to all workspaces, greatly simplify workspace consistency.
