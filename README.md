@@ -1,4 +1,4 @@
-# 🚀 Advanced Dev Spaces Demo
+# Advanced Dev Spaces Demo
 
 <div align="center">
 
@@ -16,22 +16,22 @@
 
 OpenShift Dev Spaces is an open source **"cloud"-based IDE** that runs in your OpenShift cluster and is accessed via browsers (e.g. Chrome/Firefox) or remotely (VS Code/JetBrains/Kiro).
 
-> 🎯 **Mission**: Define your workspace and IDE environment **"as code"**, centrally manage common configuration, and provide sandboxed isolation for individual developers.
+> **Mission**: Define your workspace and IDE environment **"as code"**, centrally manage common configuration, and provide sandboxed isolation for individual developers.
 
 This drastically improves development environment consistency, ensuring all developers on the team have the same runtime versions, CLI tools, commands, and basic configuration.
 
-✨ **Developer onboarding** is greatly improved - a developer can be up and running as soon as they have credentials to log into the environment and git. No need to set up a laptop or a cloud-based operating system that will quickly drift away from the standard.
+**Developer onboarding** is greatly improved - a developer can be up and running as soon as they have credentials to log into the environment and git. No need to set up a laptop or a cloud-based operating system that will quickly drift away from the standard.
 
 <div align="center">
 
 ### Here are the ways OpenShift Dev Spaces provides incredible value:
 
-| 🌟 Feature | 💡 Benefit | 🎯 Impact |
+| Feature | Benefit | Impact |
 |------------|------------|-----------|
-| **Centralized Devfile Management** | 🚀 Consistent environments | **Instant onboarding** |
-| **Security & Compliance** | 🛡️ Sandboxed development | **Agentic code assistant safety** |
-| **Container Tools** | 🐳 No local setup required | **Instant development** |
-| **Custom UDI** | 🔧 Tailored tooling | **Perfect team fit** |
+| **Centralized Devfile Management** | Consistent environments | **Instant onboarding** |
+| **Security & Compliance** | Sandboxed development | **Agentic code assistant safety** |
+| **Container Tools** | No local setup required | **Instant development** |
+| **Custom UDI** | Tailored tooling | **Perfect team fit** |
 
 </div>
 
@@ -45,10 +45,10 @@ This drastically improves development environment consistency, ensuring all deve
 
 <div align="center">
 
-| 🛡️ Challenge | 💡 Solution | ✨ Result |
+| Challenge | Solution | Result |
 |--------------|-------------|-----------|
-| **🔐 Private Repo Access** | 📤 Public Devfile Registry | 🚀 Instant Workspace Startup |
-| **🔒 Access Control** | 🏢 Separate Repositories | 🔑 Tighter Security Control |
+| **Private Repo Access** | Public Devfile Registry | Instant Workspace Startup |
+| **Access Control** | Separate Repositories | Tighter Security Control |
 
 </div>
 
@@ -109,54 +109,54 @@ spec:
           mountSources: true
 ```
 
-> 🔐 **Admin Access**: These settings are managed by cluster administrators with proper permissions.
+> **Admin Access**: These settings are managed by cluster administrators with proper permissions.
 
 The settings above are managed by a "cluster admin", or a user that is delegated permission to manage this resource.
 
 ## Central Configuration Management
 
-> 🏗️ **Build Once, Deploy Everywhere**: Standardize developer environments across your organization
+> **Build Once, Deploy Everywhere**: Standardize developer environments across your organization
 
 <div align="center">
 
-### 📋 Common Configuration Examples
+### Common Configuration Examples
 
-| 🛠️ Tool | 📄 Config File | 🎯 Purpose | 
+| Tool | Config File | Purpose | 
 |---------|---------------|------------|
-| **Maven** | `settings.xml` | 🌍 Central repository access |
-| **npm** | `.npmrc` | 📦 Registry & proxy settings |
-| **Python** | `pip.conf` | 🐍 Package sources |
+| **Maven** | `settings.xml` | Central repository access |
+| **npm** | `.npmrc` | Registry & proxy settings |
+| **Python** | `pip.conf` | Package sources |
 
 </div>
 
 It's completely normal to have common configuration that all developers require. A perfect example is a `settings.xml` file that all developers should use. This configuration can be centrally managed and distributed to all workspaces, **greatly simplifying workspace consistency** across your entire organization.
 
-## 🐳 Container Tools
+## Container Tools
 
-> 🚀 **Container Freedom**: Run containers anywhere, anytime, without local setup
+> **Container Freedom**: Run containers anywhere, anytime, without local setup
 
 <div align="center">
 
-### 🎯 Perfect for These Scenarios
+### Perfect for These Scenarios
 
-| 🏢 Environment | ❌ Challenge | ✅ Dev Spaces Solution |
+| Environment | Challenge | Dev Spaces Solution |
 |----------------|-------------|----------------------|
-| **🏢 Corporate Laptops** | 🔒 No Docker/Podman access | 🐳 Run containers in workspace |
-| **🔒 High Security** | 🚫 Local container restrictions | 🛡️ Sandboxed container execution |
-| **⚡ Quick Development** | ⏰ Setup time for container tools | 🏃 Instant container ready |
+| **Corporate Laptops** | No Docker/Podman access | Run containers in workspace |
+| **High Security** | Local container restrictions | Sandboxed container execution |
+| **Quick Development** | Setup time for container tools | Instant container ready |
 
 </div>
 
 In some organizations, running local container tools like docker or podman on workstations is difficult or impossible. Dev Spaces gives you the ability to run containers safely in your individual workspace.
 
 **Popular Use Cases:**
-- **🧪 TestContainers**: Automated testing with real dependencies
-- **🔬 Microservice Development**: Run supporting services locally  
-- **📦 Database Testing**: Spin up databases for integration tests
+- **TestContainers**: Automated testing with real dependencies
+- **Microservice Development**: Run supporting services locally  
+- **Database Testing**: Spin up databases for integration tests
 
 ## Custom "Universal Developer Image"
 
-> 🏗️ **Build Your Perfect Tool**: Extend the official UDI to create project-specific development environments
+> **Build Your Perfect Tool**: Extend the official UDI to create project-specific development environments
 
 <div align="center">
 
@@ -170,41 +170,41 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 ### Cloud Team UDI
 
-| 🛠️ Tool Category | 📦 Examples | 🎯 Use Case |
+| Tool Category | Examples | Use Case |
 |------------------|-------------|-------------|
-| **☁️ Cloud CLIs** | `aws`, `az`, `gcloud` | 🚀 Multi-cloud management |
-| **📊 Monitoring** | `kubectl`, `helm`, `k9s` | 🔍 Cluster administration |
-| **⚡ Automation** | `terraform`, `ansible` | 🏗️ Infrastructure as Code |
+| **Cloud CLIs** | `aws`, `az`, `gcloud` | Multi-cloud management |
+| **Monitoring** | `kubectl`, `helm`, `k9s` | Cluster administration |
+| **Automation** | `terraform`, `ansible` | Infrastructure as Code |
 
-### AI Assited Development UDI
+### AI Assisted Development UDI
 
-| 🧠 AI Tool | 🤖 Models | 🔗 Integration |
+| AI Tool | Models | Integration |
 |------------|-----------|----------------|
-| **OpenCode** | 🤖 Vetted org models | 🎛️ Central config management |
-| **GitHub Copilot** | 🎯 Custom completions | 🔐 Enterprise authentication |
-| **Local LLMs** | 🏠 Self-hosted models | 🛡️ Privacy-first development |
+| **OpenCode** | Vetted org models | Central config management |
+| **GitHub Copilot** | Custom completions | Enterprise authentication |
+| **Local LLMs** | Self-hosted models | Privacy-first development |
 
 </div>
 
 **Quick Examples:**
 
-🏢 **Cloud Team**: Don't really "code" but need cloud provider tools? Create a UDI with AWS CLI, Azure CLI, PowerShell, and more!
+**Cloud Team**: Don't really "code" but need cloud provider tools? Create a UDI with AWS CLI, Azure CLI, PowerShell, and more!
 
-🤖 **AI Team**: Want to use open source coding agents? Create a UDI with OpenCode pre-packaged and use central config management to connect to your organization's vetted models.
+**AI Team**: Want to use open source coding agents? Create a UDI with OpenCode pre-packaged and use central config management to connect to your organization's vetted models.
 
-## 🛡️ Security and Compliance
+## Security and Compliance
 
-> 🔒 **Enterprise-Ready Security**: OpenShift Dev Spaces excels in security and compliance, delivering powerful protection capabilities
+> **Enterprise-Ready Security**: OpenShift Dev Spaces excels in security and compliance, delivering powerful protection capabilities
 
 <div align="center">
 
 ### Key Security Benefits
 
-| 🛡️ Security Layer | 🔒 Protection | 🎯 Business Impact |
+| Security Layer | Protection | Business Impact |
 |------------------|---------------|-------------------|
-| **📍 Network Isolation** | 🔐 Code never leaves cluster | No code on laptops |
-| **🏗️ Sandbox Environment** | ⚡ AI tool isolation | 🚀 Safe AI integration |
-| **🔑 Access Controls** | 👤 Role-based permissions | 🎛️ Granular governance |
+| **Network Isolation** | Code never leaves cluster | No code on laptops |
+| **Sandbox Environment** | AI tool isolation | Safe AI integration |
+| **Access Controls** | Role-based permissions | Granular governance |
 
 </div>
 
@@ -218,33 +218,33 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 **Sandbox Protection**: As teams adopt AI tools like coding assistants and agents, sandbox environments become critical:
 
-| 🤖 AI Threat | 🛡️ Dev Spaces Protection | 🚀 Recovery Time |
+| AI Threat | Dev Spaces Protection | Recovery Time |
 |-------------|-------------------------|------------------|
-| **💥 Home Directory Deletion** | 🔄 Instant workspace recreation | ⚡ 1-2 minutes |
-| **🔓 Privilege Escalation** | 🏗️ Role-based access controls | ✅ Prevented |
-| **🚫 Shadow Models** | 📋 "As code" governance | 🔒 Controlled |
+| **Home Directory Deletion** | Instant workspace recreation | 1-2 minutes |
+| **Privilege Escalation** | Role-based access controls | Prevented |
+| **Shadow Models** | "As code" governance | Controlled |
 
 </div>
 
 **Multi-Layer Protection:**
 
-- 🔄 **Quick Recovery**: If an agent deletes your home directory, simply delete and re-start your workspace
-- 🔑 **Access Controls**: Role-based access, security context constraints, network policies, and resource quotas
-- 📋 **Governance**: The "as code" nature makes it difficult to bypass security controls or install unvetted extensions
+- **Quick Recovery**: If an agent deletes your home directory, simply delete and re-start your workspace
+- **Access Controls**: Role-based access, security context constraints, network policies, and resource quotas
+- **Governance**: The "as code" nature makes it difficult to bypass security controls or install unvetted extensions
 
 ## Cost and Maintenance
 
-> 💡 **Smart Economics**: Reduce hardware costs while improving development efficiency
+> **Smart Economics**: Reduce hardware costs while improving development efficiency
 
 <div align="center">
 
 ### Cost Optimization
 
-| 💻 Traditional Approach | 🚀 Dev Spaces Approach | 💰 Savings |
+| Traditional Approach | Dev Spaces Approach | Savings |
 |------------------------|----------------------|------------|
-| **💸 Powerful Laptops** | **🖥️ Any Laptop** | **$2,000-4,000 per dev** |
-| **⏰ Local Setup Time** | **⚡ Instant Access** | **8-40 hours per onboarding** |
-| **🔧 Individual Maintenance** | **🏢 Central Management** | **Many hours annually** |
+| **Powerful Laptops** | **Any Laptop** | **$2,000-4,000 per dev** |
+| **Local Setup Time** | **Instant Access** | **8-40 hours per onboarding** |
+| **Individual Maintenance** | **Central Management** | **Many hours annually** |
 
 </div>
 
@@ -260,13 +260,13 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 ### Supported Platforms
 
-| 🏢 Platform | 🌍 Availability | 💳 Cost |
+| Platform | Availability | Cost |
 |-------------|----------------|--------------|
-| **OpenShift Container Platform** | ✅ Included | Worker node capacity |
-| **Azure Red Hat OpenShift** | ✅ Included | Worker node capacity |
-| **Red Hat OpenShift on AWS** | ✅ Included | Worker node capacity |
-| **OpenShift Dedicated on GCP** | ✅ Included | Worker node capacity |
+| **OpenShift Container Platform** | Included | Worker node capacity |
+| **Azure Red Hat OpenShift** | Included | Worker node capacity |
+| **Red Hat OpenShift on AWS** | Included | Worker node capacity |
+| **OpenShift Dedicated on GCP** | Included | Worker node capacity |
 
 </div>
 
-> 🎯 **Bottom Line**: There's **nothing extra to procure** for Dev Spaces - just additional "worker node" capacity.
+> **Bottom Line**: There's **nothing extra to procure** for Dev Spaces - just additional "worker node" capacity.
