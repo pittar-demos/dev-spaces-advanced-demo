@@ -1,0 +1,49 @@
+# FROM UDI Latest
+FROM registry.redhat.io/devspaces/udi-rhel9:latest
+
+USER root
+
+# 1. Add AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf awscliv2.zip aws/
+
+# 2. Add Azure CLI & PowerShell
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+    dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm && \
+    dnf install -y azure-cli powershell && \
+    dnf clean all
+
+# 3. Install Azure Powershell (Fixing the previous shell error)
+RUN pwsh -Command "Install-Module -Name Az -Repository PSGallery -Force -Scope AllUsers"
+
+# 4. Add Helm CLI
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && \
+    chmod 700 get_helm.sh && \
+    ./get_helm.sh && \
+    rm get_helm.sh
+
+# 5. Add ROSA CLI (with ownership fix)
+RUN curl -L "https://developers.redhat.com/content-gateway/file/pub/cgw/rosa/1.2.61/rosa-linux.tar.gz" -o "rosa-linux.tar.gz" && \
+    tar -xvf rosa-linux.tar.gz --no-same-owner && \
+    mv rosa /usr/local/bin/rosa && \
+    chmod +x /usr/local/bin/rosa && \
+    rm rosa-linux.tar.gz
+
+# Install OpenCode
+ENV OPENCODE_VERSION=v1.18.32
+RUN mkdir -p /opt/opencode-install && \
+    curl -L -o /opt/opencode-install/opencode.tar.gz \
+    https://github.com/anomalyco/opencode/releases/download/${OPENCODE_VERSION}/opencode-linux-x64.tar.gz && \
+    tar -xzf /opt/opencode-install/opencode.tar.gz -C /opt/opencode-install && \
+    mv /opt/opencode-install/opencode /usr/local/bin/opencode && \
+    chmod +x /usr/local/bin/opencode && \
+    rm -rf /opt/opencode-install 
+
+# 6. We do this last to catch any files created by the installations above
+RUN chgrp -R 0 /home/user && \
+    chmod -R g=u /home/user
+
+USER 10001
+#WORKDIR /home/user

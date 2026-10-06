@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "redhat.java",
+    "redhat.vscode-yaml",
+    "redhat.vscode-quarkus",
+    "42Crunch.vscode-openapi",
+    "EchoAPI.echoapi-for-vscode",
+    "redhat.fabric8-analytics"
+  ]
+}
