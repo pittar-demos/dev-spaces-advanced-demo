@@ -24,12 +24,12 @@ This drastically improves development environment consistency, ensuring all deve
 
 <div align="center">
 
-### 🎨 Here are the ways OpenShift Dev Spaces provides incredible value:
+### Here are the ways OpenShift Dev Spaces provides incredible value:
 
 | 🌟 Feature | 💡 Benefit | 🎯 Impact |
 |------------|------------|-----------|
-| **Centralized Devfile Management** | 🚀 Consistent environments | **99% faster onboarding** |
-| **Security & Compliance** | 🛡️ Sandboxed development | **Zero data leakage** |
+| **Centralized Devfile Management** | 🚀 Consistent environments | **Instant onboarding** |
+| **Security & Compliance** | 🛡️ Sandboxed development | **Agentic code assistant safety** |
 | **Container Tools** | 🐳 No local setup required | **Instant development** |
 | **Custom UDI** | 🔧 Tailored tooling | **Perfect team fit** |
 
@@ -37,11 +37,11 @@ This drastically improves development environment consistency, ensuring all deve
 
 ---
 
-## 📁 Centralized Devfile Management
+## Centralized Devfile Management
 
-> 🎭 **The Foundation**: The core file that defines the development environment for a project is the **devfile** (`devfile.yaml` or `.devfile.yaml`). This file can exist in the root of your git repository, or it can be centrally managed in a "devfile" repository.
+> **The Foundation**: The core file that defines the development environment for a project is the **devfile** (`devfile.yaml` or `.devfile.yaml`). This file can exist in the root of your git repository, or it can be centrally managed in a "devfile" repository.
 
-### 🏗️ Why Centralize Your Devfiles?
+### Why Centralize Your Devfiles?
 
 <div align="center">
 
@@ -52,19 +52,18 @@ This drastically improves development environment consistency, ensuring all deve
 
 </div>
 
-**🎯 Two powerful benefits emerge:**
+**Two powerful benefits emerge:**
 
-✅ **Authentication Simplification**: If your git repositories are private, Dev Spaces needs credentials to read the `devfile`. This works great with the "big four" (GitHub, GitLab, Bitbucket, Azure Repos), but can be tricky with lesser-known platforms like Gitea. By keeping devfiles (no sensitive data) in a public repository, Dev Spaces reads the devfile, starts the workspace, then uses your credentials to clone private repos.
+* **Authentication Simplification**: If your git repositories are private, Dev Spaces needs credentials to read the `devfile`. This works great with the "big four" (GitHub, GitLab, Bitbucket, Azure Repos), but can be tricky with lesser-known platforms like Gitea. By keeping devfiles (no sensitive data) in a public repository, Dev Spaces reads the devfile, starts the workspace, then uses your credentials to clone private repos.
+* **Governance & Control**: A central devfile repository separates devfiles from project repos, making management easier while maintaining tighter control. Project team members with commit access to project repos won't have access to the devfile repository.
 
-🔒 **Governance & Control**: A central devfile repository separates devfiles from project repos, making management easier while maintaining tighter control. Project team members with commit access to project repos won't have access to the devfile repository.
+## Dev Space Administrative Controls
 
-## ⚙️ Dev Space Administrative Controls
-
-> 🎛️ **Power User Features**: Customize Dev Spaces with organization-specific settings
+> **Power User Features**: Customize Dev Spaces with organization-specific settings
 
 <div align="center">
 
-### 🏢 Organizational Configuration
+### Organizational Configuration
 
 The following `CheCluster` custom resource showcases key administrative controls:
 
@@ -114,7 +113,7 @@ spec:
 
 The settings above are managed by a "cluster admin", or a user that is delegated permission to manage this resource.
 
-## 🎛️ Central Configuration Management
+## Central Configuration Management
 
 > 🏗️ **Build Once, Deploy Everywhere**: Standardize developer environments across your organization
 
@@ -127,7 +126,6 @@ The settings above are managed by a "cluster admin", or a user that is delegated
 | **Maven** | `settings.xml` | 🌍 Central repository access |
 | **npm** | `.npmrc` | 📦 Registry & proxy settings |
 | **Python** | `pip.conf` | 🐍 Package sources |
-| **Docker** | `daemon.json` | 🐳 Registry mirrors |
 
 </div>
 
@@ -151,20 +149,18 @@ It's completely normal to have common configuration that all developers require.
 
 In some organizations, running local container tools like docker or podman on workstations is difficult or impossible. Dev Spaces gives you the ability to run containers safely in your individual workspace.
 
-**🎉 Popular Use Cases:**
+**Popular Use Cases:**
 - **🧪 TestContainers**: Automated testing with real dependencies
 - **🔬 Microservice Development**: Run supporting services locally  
 - **📦 Database Testing**: Spin up databases for integration tests
 
-> 💫 **The Magic**: No tools to install, no local setup required!
-
-## 🔧 Custom "Universal Developer Image"
+## Custom "Universal Developer Image"
 
 > 🏗️ **Build Your Perfect Tool**: Extend the official UDI to create project-specific development environments
 
 <div align="center">
 
-### 🎯 Real-World UDI Examples
+### Real-World UDI Examples
 
 </div>
 
@@ -172,7 +168,7 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 <div align="center">
 
-### ☁️ Cloud Team UDI
+### Cloud Team UDI
 
 | 🛠️ Tool Category | 📦 Examples | 🎯 Use Case |
 |------------------|-------------|-------------|
@@ -180,7 +176,7 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 | **📊 Monitoring** | `kubectl`, `helm`, `k9s` | 🔍 Cluster administration |
 | **⚡ Automation** | `terraform`, `ansible` | 🏗️ Infrastructure as Code |
 
-### 🤖 AI Development UDI
+### AI Assited Development UDI
 
 | 🧠 AI Tool | 🤖 Models | 🔗 Integration |
 |------------|-----------|----------------|
@@ -190,13 +186,11 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 </div>
 
-**🛠️ Quick Examples:**
+**Quick Examples:**
 
 🏢 **Cloud Team**: Don't really "code" but need cloud provider tools? Create a UDI with AWS CLI, Azure CLI, PowerShell, and more!
 
 🤖 **AI Team**: Want to use open source coding agents? Create a UDI with OpenCode pre-packaged and use central config management to connect to your organization's vetted models.
-
-> 🌟 **Limitless Possibilities**: The sky is the limit! 🚀
 
 ## 🛡️ Security and Compliance
 
@@ -204,26 +198,25 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 <div align="center">
 
-### 🏢 Key Security Benefits
+### Key Security Benefits
 
 | 🛡️ Security Layer | 🔒 Protection | 🎯 Business Impact |
 |------------------|---------------|-------------------|
-| **📍 Network Isolation** | 🔐 Code never leaves cluster | ✅ Zero data leakage |
+| **📍 Network Isolation** | 🔐 Code never leaves cluster | No code on laptops |
 | **🏗️ Sandbox Environment** | ⚡ AI tool isolation | 🚀 Safe AI integration |
 | **🔑 Access Controls** | 👤 Role-based permissions | 🎛️ Granular governance |
-| **📋 Compliance Ready** | 📊 Audit trails | 🏢 Regulatory compliance |
 
 </div>
 
-### 🔐 Core Security Features
+### Core Security Features
 
-**🌐 Network Security**: Source code stays in your workspace pod within your OpenShift cluster - your source code **never lands on a developer laptop**. A lost or stolen laptop doesn't contain sensitive information.
+**Network Security**: Source code stays in your workspace pod within your OpenShift cluster - your source code **never lands on a developer laptop**. A lost or stolen laptop doesn't contain sensitive information.
 
 <div align="center">
 
-### 🤖 AI Era Security
+### AI Era Security
 
-**⚡ Sandbox Protection**: As teams adopt AI tools like coding assistants and agents, sandbox environments become critical:
+**Sandbox Protection**: As teams adopt AI tools like coding assistants and agents, sandbox environments become critical:
 
 | 🤖 AI Threat | 🛡️ Dev Spaces Protection | 🚀 Recovery Time |
 |-------------|-------------------------|------------------|
@@ -233,59 +226,47 @@ When you need additional tools or CLIs that aren't included in the default UDI i
 
 </div>
 
-**🛡️ Multi-Layer Protection:**
+**Multi-Layer Protection:**
+
 - 🔄 **Quick Recovery**: If an agent deletes your home directory, simply delete and re-start your workspace
 - 🔑 **Access Controls**: Role-based access, security context constraints, network policies, and resource quotas
 - 📋 **Governance**: The "as code" nature makes it difficult to bypass security controls or install unvetted extensions
-## 💰 Cost and Maintenance
+
+## Cost and Maintenance
 
 > 💡 **Smart Economics**: Reduce hardware costs while improving development efficiency
 
 <div align="center">
 
-### 📊 Cost Optimization
+### Cost Optimization
 
 | 💻 Traditional Approach | 🚀 Dev Spaces Approach | 💰 Savings |
 |------------------------|----------------------|------------|
 | **💸 Powerful Laptops** | **🖥️ Any Laptop** | **$2,000-4,000 per dev** |
 | **⏰ Local Setup Time** | **⚡ Instant Access** | **8-40 hours per onboarding** |
-| **🔧 Individual Maintenance** | **🏢 Central Management** | **100+ hours annually** |
+| **🔧 Individual Maintenance** | **🏢 Central Management** | **Many hours annually** |
 
 </div>
 
-### 🏗️ Infrastructure Efficiency
+### Infrastructure Efficiency
 
-**📈 Resource Optimization**: Many developer workspaces can be efficiently bin-packed on worker nodes, scaling pods and nodes up and down on demand. The computing power needed for development is on the server side - developers no longer require expensive, powerful laptops.
+**Resource Optimization**: Many developer workspaces can be efficiently bin-packed on worker nodes, scaling pods and nodes up and down on demand. The computing power needed for development is on the server side - developers no longer require expensive, powerful laptops.
 
-### 🛠️ Maintenance Benefits
+### Maintenance Benefits
 
-**🔧 Simplified Management**: Developer workspace configuration is controlled by the devfile, and underlying tools/runtimes are contained in the tools image - **removing IDE maintenance burden from individual developers**.
+**Simplified Management**: Developer workspace configuration is controlled by the devfile, and underlying tools/runtimes are contained in the tools image - **removing IDE maintenance burden from individual developers**.
 
 <div align="center">
 
-### 🌐 Supported Platforms
+### Supported Platforms
 
-| 🏢 Platform | 🌍 Availability | 💳 Licensing |
+| 🏢 Platform | 🌍 Availability | 💳 Cost |
 |-------------|----------------|--------------|
-| **🔴 OpenShift Container Platform** | ✅ Included | ✅ No additional cost |
-| **☁️ Azure Red Hat OpenShift** | ✅ Native support | 💰 Worker node capacity |
-| **☁️ Red Hat OpenShift on AWS** | ✅ Enterprise ready | 💰 Infrastructure only |
-| **☁️ OpenShift Dedicated on GCP** | ✅ Managed service | 💰 Operational costs |
+| **OpenShift Container Platform** | ✅ Included | Worker node capacity |
+| **Azure Red Hat OpenShift** | ✅ Included | Worker node capacity |
+| **Red Hat OpenShift on AWS** | ✅ Included | Worker node capacity |
+| **OpenShift Dedicated on GCP** | ✅ Included | Worker node capacity |
 
 </div>
 
-> 🎯 **Bottom Line**: There's **nothing extra to procure** for Dev Spaces - just additional "worker node" capacity!
-
----
-
-<div align="center">
-
-## 🎉 Ready to Transform Your Development?
-
-[![Get Started](https://img.shields.io/badge/🚀-Get_Started-red?style=for-the-badge&logo=rocket&logoColor=white)](#)
-[![Documentation](https://img.shields.io/badge/📚-Documentation-blue?style=for-the-badge&logo=book&logoColor=white)](#)
-[![Community](https://img.shields.io/badge/👥-Join_Community-green?style=for-the-badge&logo=discord&logoColor=white)](#)
-
-**Made with ❤️ by the OpenShift Dev Spaces Team**
-
-</div>
+> 🎯 **Bottom Line**: There's **nothing extra to procure** for Dev Spaces - just additional "worker node" capacity.
